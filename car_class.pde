@@ -23,7 +23,8 @@ class Car{
     velocity.add(acceleration);
     velocity.limit(topspeed);
     location.add(velocity); 
-acceleration.random2D();
+    acceleration.random2D();
+    acceleration.mult(0);
   }
   
   void display(){
