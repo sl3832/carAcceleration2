@@ -1,22 +1,29 @@
-Car [] cars = new Car [100];
+Car [] cars = new Car [1000];
 float tx=0;
 float ty=0;
 
 void setup() {
   size(1000, 400);
-  tx=width/8;
-  ty=height/8; 
+  
+  
+  
   for (int i=0; i<cars.length; i++) {
-    cars[i] = new Car(new PVector(tx*i/2, ty*i/2));
+   tx=random(width);
+   ty=random(height); 
+   
+   cars[i] = new Car(new PVector(tx, ty));
   }
 }
 
 void draw() {
   background(255);
-  frameRate(20);
+ // frameRate(20);
+  //fill(0);
+  //rect(width-20,height/2,20,50);
+  
   PVector gravity = new PVector(0,0.01);
   
-  PVector wind = new PVector(0.1,0);
+  PVector wind = new PVector(0.01,0);
 
 for(int i=0; i<cars.length; i++){
   cars[i].update();
@@ -27,9 +34,12 @@ for(int i=0; i<cars.length; i++){
  
 }
 for(int i=0; i<cars.length; i++){
- if(keyPressed){
-  PVector storm = new PVector(6,6);
+  
+ if(mousePressed){
+  PVector storm = new PVector(0,15);
   cars[i].applyForce(storm);
-}
+  cars[i].update();
+ }
+
 }
 }

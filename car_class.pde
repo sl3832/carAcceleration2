@@ -9,7 +9,7 @@ class Car{
    
     location = loc;
     velocity = new PVector(0,0);
-    acceleration = new PVector(random(2),random(-2,2));
+    acceleration = new PVector(0,random(-2,2));
 
     topspeed = 5;
   }
@@ -20,6 +20,12 @@ class Car{
   
   void update(){
     
+    //PVector mouse = new PVector(mouseX,mouseY);
+    //PVector dir = PVector.sub(mouse, location);
+    
+    //acceleration = dir;
+    //acceleration.add(dir);
+    
     velocity.add(acceleration);
     velocity.limit(topspeed);
     location.add(velocity); 
@@ -29,8 +35,8 @@ class Car{
   
   void display(){
     noStroke();
-    fill(255,0,0);
-    rect(location.x,location.y,48,12);
+    fill(32,184,242,200);
+    rect(location.x,location.y,2,12);
   }
   
    void checkEdges() {
